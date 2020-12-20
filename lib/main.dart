@@ -50,8 +50,50 @@ class MyHomePage extends StatelessWidget {
             Column(
                 children: expenses.map((e) {
               return Card(
-                child: Text(e.title),
                 elevation: 5,
+                child: Row(
+                  children: [
+                    Container(
+                      child: Text(
+                        '\$ ${e.amount.toString()}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Colors.purple,
+                        ),
+                      ),
+                      margin: EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 15,
+                      ),
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.purple,
+                          width: 2,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          e.title,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          e.date.toString(),
+                          style: TextStyle(
+                            color: Colors.blueGrey,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               );
             }).toList()),
           ],
