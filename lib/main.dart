@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './expense.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(MyApp());
@@ -85,7 +86,7 @@ class MyHomePage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          e.date.toString(),
+                          DateFormat.yMMMMd().format(e.date),
                           style: TextStyle(
                             color: Colors.blueGrey,
                           ),
