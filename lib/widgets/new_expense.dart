@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class NewExpense extends StatelessWidget {
   final titeController = TextEditingController();
   final amountController = TextEditingController();
+  final Function addExpense;
 
+  NewExpense(this.addExpense);
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -24,7 +26,12 @@ class NewExpense extends StatelessWidget {
             FlatButton(
               child: Text('Add Expense'),
               textColor: Colors.purple,
-              onPressed: () {},
+              onPressed: () {
+                this.addExpense(
+                  titeController.text,
+                  double.parse(amountController.text),
+                );
+              },
             )
           ],
         ),

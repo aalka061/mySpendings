@@ -23,12 +23,23 @@ class _UserExpensesState extends State<UserExpenses> {
       date: DateTime.now(),
     ),
   ];
+  void _addNewExpense(String title, double amount) {
+    final newExp = Expense(
+      id: DateTime.now().toString(),
+      title: title,
+      amount: amount,
+      date: DateTime.now(),
+    );
+    setState(() {
+      _userExpenses.add(newExp);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        NewExpense(),
+        NewExpense(this._addNewExpense),
         ExpenseList(this._userExpenses),
       ],
     );

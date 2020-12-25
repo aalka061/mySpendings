@@ -4,7 +4,9 @@ import 'package:intl/intl.dart';
 
 class ExpenseList extends StatelessWidget {
   final List<Expense> expenses;
+
   ExpenseList(this.expenses);
+
   @override
   Widget build(BuildContext context) {
     return Column(
