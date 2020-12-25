@@ -27,10 +27,11 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Flutter app"),
-        ),
-        body: Column(
+      appBar: AppBar(
+        title: Text("Flutter app"),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
           children: [
             Container(
               width: double.infinity,
@@ -43,6 +44,8 @@ class MyHomePage extends StatelessWidget {
             ),
             UserExpenses(),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
