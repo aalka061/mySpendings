@@ -17,7 +17,7 @@ class ExpenseList extends StatelessWidget {
             children: [
               Container(
                 child: Text(
-                  '\$ ${e.amount.toString()}',
+                  '\$ ${e.amount.toStringAsFixed(2)}',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
