@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_spendings/widgets/user_expenses.dart';
+import 'package:my_spendings/widgets/expense_list.dart';
+import 'package:my_spendings/widgets/new_expense.dart';
 import 'models/expense.dart';
 
 void main() {
@@ -16,13 +17,59 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   final List<Expense> expenses = [];
 
-  // String titleInput;
-  // String amountInput;
   final titleInput = TextEditingController();
+
   final amountInput = TextEditingController();
+
+  final List<Expense> _userExpenses = [
+    Expense(
+      id: 'e1',
+      title: 'shoes',
+      amount: 70.00,
+      date: DateTime.now(),
+    ),
+    Expense(
+      id: 'e2',
+      title: 'sunglasses',
+      amount: 40.00,
+      date: DateTime.now(),
+    ),
+  ];
+
+  void _addNewExpense(String title, double amount) {
+    final newExp = Expense(
+      id: DateTime.now().toString(),
+      title: title,
+      amount: amount,
+      date: DateTime.now(),
+    );
+    setState(() {
+      _userExpenses.add(newExp);
+    });
+  }
+
+  void _showNewExpensemodal(BuildContext ctx) {
+    // ctx is pased from the build method
+    // bCtx is the context if we are building
+    showModalBottomSheet(
+      context: ctx,
+      builder: (_) {
+        return GestureDetector(
+          onTap: () {},
+          child: NewExpense(_addNewExpense),
+          behavior: HitTestBehavior.opaque,
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +95,16 @@ class MyHomePage extends StatelessWidget {
                 shadowColor: Colors.blue,
               ),
             ),
-            UserExpenses(),
+            ExpenseList(_userExpenses),
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          _showNewExpensemodal(context);
+        },
       ),
     );
   }

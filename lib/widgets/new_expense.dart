@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 
-class NewExpense extends StatelessWidget {
-  final titeController = TextEditingController();
-  final amountController = TextEditingController();
+class NewExpense extends StatefulWidget {
   final Function addExpense;
+
+  NewExpense(this.addExpense);
+
+  @override
+  _NewExpenseState createState() => _NewExpenseState();
+}
+
+class _NewExpenseState extends State<NewExpense> {
+  final titeController = TextEditingController();
+
+  final amountController = TextEditingController();
 
   void _submitForm() {
     final inputTitle = this.titeController.text;
@@ -11,13 +20,12 @@ class NewExpense extends StatelessWidget {
     if (inputTitle.isEmpty || inputAmount < 0) {
       return;
     }
-    this.addExpense(
-      titeController.text,
-      double.parse(amountController.text),
-    );
+    this.widget.addExpense(
+          titeController.text,
+          double.parse(amountController.text),
+        );
   }
 
-  NewExpense(this.addExpense);
   @override
   Widget build(BuildContext context) {
     return Card(
