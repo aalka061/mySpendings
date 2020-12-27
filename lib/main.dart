@@ -49,18 +49,18 @@ class _MyHomePageState extends State<MyHomePage> {
   final amountInput = TextEditingController();
 
   final List<Expense> _userExpenses = [
-    Expense(
-      id: 'e1',
-      title: 'shoes',
-      amount: 70.00,
-      date: DateTime.now(),
-    ),
-    Expense(
-      id: 'e2',
-      title: 'sunglasses',
-      amount: 40.00,
-      date: DateTime.now(),
-    ),
+    // Expense(
+    //   id: 'e1',
+    //   title: 'shoes',
+    //   amount: 70.00,
+    //   date: DateTime.now(),
+    // ),
+    // Expense(
+    //   id: 'e2',
+    //   title: 'sunglasses',
+    //   amount: 40.00,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   void _addNewExpense(String title, double amount) {
