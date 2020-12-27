@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_spendings/widgets/expense_list.dart';
 import 'package:my_spendings/widgets/new_expense.dart';
 import 'models/expense.dart';
+import './widgets/chart.dart';
 
 void main() {
   runApp(MyApp());
@@ -49,19 +50,27 @@ class _MyHomePageState extends State<MyHomePage> {
   final amountInput = TextEditingController();
 
   final List<Expense> _userExpenses = [
-    // Expense(
-    //   id: 'e1',
-    //   title: 'shoes',
-    //   amount: 70.00,
-    //   date: DateTime.now(),
-    // ),
-    // Expense(
-    //   id: 'e2',
-    //   title: 'sunglasses',
-    //   amount: 40.00,
-    //   date: DateTime.now(),
-    // ),
+    Expense(
+      id: 'e1',
+      title: 'shoes',
+      amount: 70.00,
+      date: DateTime.now(),
+    ),
+    Expense(
+      id: 'e2',
+      title: 'sunglasses',
+      amount: 40.00,
+      date: DateTime.now(),
+    ),
   ];
+
+  List<Expense> get _recentExpenses {
+    return _userExpenses.where((ex) {
+      return ex.date.isAfter(DateTime.now().subtract(
+        Duration(days: 7),
+      ));
+    }).toList();
+  }
 
   void _addNewExpense(String title, double amount) {
     final newExp = Expense(
@@ -107,15 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              height: 60,
-              child: Card(
-                child: Center(child: Text("Chart")),
-                elevation: 6,
-                shadowColor: Colors.blue,
-              ),
-            ),
+            Chart(this._recentExpenses),
             ExpenseList(_userExpenses),
           ],
         ),
