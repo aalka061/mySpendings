@@ -41,10 +41,7 @@ class ExpenseList extends StatelessWidget {
                 children: [
                   Text(
                     e.title,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headline6,
                   ),
                   Text(
                     DateFormat.yMMMMd().format(e.date),
