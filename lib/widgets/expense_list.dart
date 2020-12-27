@@ -21,7 +21,7 @@ class ExpenseList extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
-                    color: Colors.purple,
+                    color: Theme.of(context).primaryColorDark,
                   ),
                 ),
                 margin: EdgeInsets.symmetric(
@@ -31,7 +31,7 @@ class ExpenseList extends StatelessWidget {
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.purple,
+                    color: Theme.of(context).primaryColorDark,
                     width: 2,
                   ),
                 ),
