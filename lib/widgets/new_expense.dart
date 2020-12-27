@@ -20,10 +20,11 @@ class _NewExpenseState extends State<NewExpense> {
     if (inputTitle.isEmpty || inputAmount < 0) {
       return;
     }
-    this.widget.addExpense(
-          titeController.text,
-          double.parse(amountController.text),
-        );
+    widget.addExpense(
+      inputTitle,
+      inputAmount,
+    );
+    Navigator.of(context).pop();
   }
 
   @override
