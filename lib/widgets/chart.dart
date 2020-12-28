@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../models/expense.dart';
+import './chart_bar.dart';
 
 class Chart extends StatelessWidget {
   final List<Expense> recentExpenses;
@@ -21,16 +22,44 @@ class Chart extends StatelessWidget {
       }
       return {
         'day': DateFormat.E().format(weekDay),
-        'TotalAmount': total,
+        'totalAmount': total,
       };
+    });
+  }
+
+  double get totalExpenses {
+    return groupedExpensesValues.fold(0.0, (sum, item) {
+      return sum + (item['totalAmount'] as double);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     print(groupedExpensesValues);
-    return Row(
-      children: [],
+
+    return Card(
+      elevation: 6,
+      margin: EdgeInsets.all(20),
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: groupedExpensesValues.map(
+            (d) {
+              return Flexible(
+                fit: FlexFit.tight,
+                child: ChartBar(
+                  d['day'],
+                  d['totalAmount'],
+                  totalExpenses == 0.0
+                      ? 0.0
+                      : (d['totalAmount'] as double) / totalExpenses,
+                ),
+              );
+            },
+          ).toList(),
+        ),
+      ),
     );
   }
 }
