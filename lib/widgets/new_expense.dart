@@ -16,14 +16,19 @@ class _NewExpenseState extends State<NewExpense> {
   DateTime _selectedDate;
 
   void _submitForm() {
+    if (amountController.text.isEmpty) {
+      return;
+    }
+
     final inputTitle = this.titeController.text;
     final inputAmount = double.parse(this.amountController.text);
-    if (inputTitle.isEmpty || inputAmount < 0) {
+    if (inputTitle.isEmpty || inputAmount < 0 || _selectedDate == null) {
       return;
     }
     widget.addExpense(
       inputTitle,
       inputAmount,
+      _selectedDate,
     );
     Navigator.of(context).pop();
   }

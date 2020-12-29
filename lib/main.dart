@@ -73,12 +73,12 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addNewExpense(String title, double amount) {
+  void _addNewExpense(String title, double amount, DateTime chosenDate) {
     final newExp = Expense(
       id: DateTime.now().toString(),
       title: title,
       amount: amount,
-      date: DateTime.now(),
+      date: chosenDate,
     );
     setState(() {
       _userExpenses.add(newExp);
