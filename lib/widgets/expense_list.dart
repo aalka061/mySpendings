@@ -4,8 +4,9 @@ import 'package:intl/intl.dart';
 
 class ExpenseList extends StatelessWidget {
   final List<Expense> expenses;
+  final Function deleteExpense;
 
-  ExpenseList(this.expenses);
+  ExpenseList(this.expenses, this.deleteExpense);
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +49,13 @@ class ExpenseList extends StatelessWidget {
                     ),
                     subtitle: Text(
                       DateFormat.yMMMEd().format(expenses[index].date),
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      color: Theme.of(context).errorColor,
+                      onPressed: () {
+                        deleteExpense(expenses[index].id);
+                      },
                     ),
                   ),
                 );

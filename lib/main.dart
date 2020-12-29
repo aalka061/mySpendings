@@ -85,6 +85,14 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _deleteExpense(String id) {
+    setState(() {
+      _userExpenses.removeWhere((element) {
+        return element.id == id;
+      });
+    });
+  }
+
   void _showNewExpensemodal(BuildContext ctx) {
     // ctx is pased from the build method
     // bCtx is the context if we are building
@@ -118,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             Chart(this._recentExpenses),
-            ExpenseList(_userExpenses),
+            ExpenseList(_userExpenses, _deleteExpense),
           ],
         ),
       ),
