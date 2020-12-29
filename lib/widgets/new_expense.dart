@@ -47,9 +47,26 @@ class _NewExpenseState extends State<NewExpense> {
               keyboardType: TextInputType.number,
               onSubmitted: (val) => _submitForm(),
             ),
-            FlatButton(
+            Container(
+              height: 70,
+              child: Row(
+                children: [
+                  Text("No date selected"),
+                  FlatButton(
+                    textColor: Theme.of(context).primaryColor,
+                    child: Text(
+                      "Select Date",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {},
+                  )
+                ],
+              ),
+            ),
+            RaisedButton(
+              color: Theme.of(context).primaryColor,
               child: Text('Add Expense'),
-              textColor: Colors.purple,
+              textColor: Theme.of(context).textTheme.button.color,
               onPressed: _submitForm,
             )
           ],
