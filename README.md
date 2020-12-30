@@ -6,10 +6,12 @@ A new Flutter project.
 
 This my first project working with Flutter. It is a simple one screen application that allows a user to add and delete expenses. In addition, Chart bar is displayed to show the recent expenses in the past 7 days and how they compare to each other. 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Learning objectives: 
+- Working with so many widgets and learn to configure them (Scaffold,AppBar, Column, Row, Text, ListView, ListView.builder, SingleChildScrollView, Card, Container, Padding, ListTile, CircleAvatar, FittedBox, IconButton ..etc). 
+- The Doc is a key to get faimilar with all aspects of each wdiget 
+- Theming and material deisgn 
+- Working with images and fonts 
+- Adding business logic to an App
 
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
