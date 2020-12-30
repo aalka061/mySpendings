@@ -4,7 +4,7 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This my first project working with Flutter. It is a simple one screen application that allows a user to add and delete expenses. In addition, Chart bar is displayed to show the recent expenses in the past 7 days and how they compare to each other. 
 
 A few resources to get you started if this is your first Flutter project:
 
