@@ -2,7 +2,6 @@
 
 This my first project working with Flutter. It is a simple one screen application that allows a user to add and delete expenses. In addition, Chart bar is displayed to show the recent expenses in the past 7 days and how they compare to each other. 
 
-A new Flutter project.
 
 ## Getting Started
 
