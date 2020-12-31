@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:my_spendings/widgets/expense_list.dart';
 import 'package:my_spendings/widgets/new_expense.dart';
 import 'models/expense.dart';
 import './widgets/chart.dart';
 
 void main() {
+  // disallow user from using landscape mode
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations(
+  //   [
+  //     DeviceOrientation.portraitUp,
+  //     DeviceOrientation.portraitDown,
+  //   ],
+  // );
   runApp(MyApp());
 }
 
@@ -65,6 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
 
+  bool _isShowChart = true;
+
   List<Expense> get _recentExpenses {
     return _userExpenses.where((ex) {
       return ex.date.isAfter(DateTime.now().subtract(
@@ -110,23 +121,74 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Flutter app"),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () {
-              _showNewExpensemodal(context);
-            },
-          ),
-        ],
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
+    final appBar = AppBar(
+      title: Text("Flutter app"),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.add),
+          onPressed: () {
+            _showNewExpensemodal(context);
+          },
+        ),
+      ],
+    );
+
+    final expList = Container(
+      height: (MediaQuery.of(context).size.height -
+              appBar.preferredSize.height -
+              MediaQuery.of(context).padding.top) *
+          0.70,
+      child: ExpenseList(
+        _userExpenses,
+        _deleteExpense,
       ),
+    );
+
+    final chartAreaLandscape = Container(
+      height: (MediaQuery.of(context).size.height -
+              appBar.preferredSize.height -
+              MediaQuery.of(context).padding.top) *
+          0.70,
+      child: Chart(this._recentExpenses),
+    );
+
+    final chartAreaPortrait = Container(
+      height: (MediaQuery.of(context).size.height -
+              appBar.preferredSize.height -
+              MediaQuery.of(context).padding.top) *
+          0.30,
+      child: Chart(this._recentExpenses),
+    );
+
+    return Scaffold(
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Chart(this._recentExpenses),
-            ExpenseList(_userExpenses, _deleteExpense),
+            if (isLandscape)
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Show chart"),
+                    Switch(
+                      value: _isShowChart,
+                      onChanged: (val) {
+                        setState(() {
+                          _isShowChart = val;
+                          print(_isShowChart);
+                        });
+                      },
+                    )
+                  ],
+                ),
+              ),
+            if (isLandscape) _isShowChart ? chartAreaLandscape : expList,
+            if (!isLandscape) chartAreaPortrait,
+            if (!isLandscape) expList
           ],
         ),
       ),

@@ -10,57 +10,54 @@ class ExpenseList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 500,
-      child: expenses.isEmpty
-          ? Column(
-              children: [
-                Text("No Expenses added yet!"),
-                SizedBox(
-                  height: 20,
+    return expenses.isEmpty
+        ? Column(
+            children: [
+              Text("No Expenses added yet!"),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 200,
+                child: Image.asset(
+                  'assets/images/waiting.png',
+                  fit: BoxFit.cover,
                 ),
-                Container(
-                  height: 200,
-                  child: Image.asset(
-                    'assets/images/waiting.png',
-                    fit: BoxFit.cover,
-                  ),
-                )
-              ],
-            )
-          : ListView.builder(
-              itemCount: expenses.length,
-              itemBuilder: (ctx, index) {
-                return Card(
-                  elevation: 5,
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      radius: 30,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: FittedBox(
-                          child: Text('\$${expenses[index].amount}'),
-                        ),
+              )
+            ],
+          )
+        : ListView.builder(
+            itemCount: expenses.length,
+            itemBuilder: (ctx, index) {
+              return Card(
+                elevation: 5,
+                child: ListTile(
+                  leading: CircleAvatar(
+                    radius: 30,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: FittedBox(
+                        child: Text('\$${expenses[index].amount}'),
                       ),
                     ),
-                    title: Text(
-                      expenses[index].title,
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                    subtitle: Text(
-                      DateFormat.yMMMEd().format(expenses[index].date),
-                    ),
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete),
-                      color: Theme.of(context).errorColor,
-                      onPressed: () {
-                        deleteExpense(expenses[index].id);
-                      },
-                    ),
                   ),
-                );
-              },
-            ),
-    );
+                  title: Text(
+                    expenses[index].title,
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  subtitle: Text(
+                    DateFormat.yMMMEd().format(expenses[index].date),
+                  ),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    color: Theme.of(context).errorColor,
+                    onPressed: () {
+                      deleteExpense(expenses[index].id);
+                    },
+                  ),
+                ),
+              );
+            },
+          );
   }
 }
