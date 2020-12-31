@@ -1,10 +1,14 @@
 # my_spendings
 
+This my first project working with Flutter. It is a simple one screen application that allows a user to add and delete expenses. In addition, Chart bar is displayed to show the recent expenses in the past 7 days and how they compare to each other. 
+
 A new Flutter project.
 
 ## Getting Started
 
-This my first project working with Flutter. It is a simple one screen application that allows a user to add and delete expenses. In addition, Chart bar is displayed to show the recent expenses in the past 7 days and how they compare to each other. 
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
 
 ## Learning objectives: 
 ### wdigets, styling , Adding logic 
@@ -24,9 +28,6 @@ This my first project working with Flutter. It is a simple one screen applicatio
 - Render content based on device platform using Platform class from dart:io
 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 
 
 ![Screenshot from 2020-12-29 17-51-46](https://user-images.githubusercontent.com/32111609/103331919-05260800-4a36-11eb-987c-907f663162d6.png)
