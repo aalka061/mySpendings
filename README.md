@@ -12,6 +12,7 @@ This my first project working with Flutter. It is a simple one screen applicatio
 - Theming and material deisgn 
 - Working with images and fonts 
 - Adding business logic to an App
+- Render content based on device platform using Platform class from dart:io
 
 ### Responsive & adaptive user interface 
 - Calculating the sizes of devices dynamically using MediaQuery widget that aloows you to fetch information about the device orientation, measures, user settings
