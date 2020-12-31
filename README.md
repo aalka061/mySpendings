@@ -19,6 +19,7 @@ This my first project working with Flutter. It is a simple one screen applicatio
 - Using the LayoutBuilder Widget 
 - Using SystemChrome to set preferred orientation 
 - Render different content based on orientation 
+- Show a modal that respect the softkeyboard insets
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
