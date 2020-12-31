@@ -7,12 +7,12 @@ A new Flutter project.
 This my first project working with Flutter. It is a simple one screen application that allows a user to add and delete expenses. In addition, Chart bar is displayed to show the recent expenses in the past 7 days and how they compare to each other. 
 
 ## Learning objectives: 
+### wdigets, styling , Adding logic 
 - Working with so many widgets and learn to configure them (Scaffold,AppBar, Column, Row, Text, ListView, ListView.builder, SingleChildScrollView, Card, Container, Padding, ListTile, CircleAvatar, FittedBox, IconButton ..etc). 
 - The Doc is a key to get faimilar with all aspects of each wdiget 
 - Theming and material deisgn 
 - Working with images and fonts 
 - Adding business logic to an App
-- Render content based on device platform using Platform class from dart:io
 
 ### Responsive & adaptive user interface 
 - Calculating the sizes of devices dynamically using MediaQuery widget that aloows you to fetch information about the device orientation, measures, user settings
@@ -21,6 +21,8 @@ This my first project working with Flutter. It is a simple one screen applicatio
 - Using SystemChrome to set preferred orientation 
 - Render different content based on orientation 
 - Show a modal that respect the softkeyboard insets
+- Render content based on device platform using Platform class from dart:io
+
 
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
