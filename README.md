@@ -28,9 +28,9 @@ samples, guidance on mobile development, and a full API reference.
 
 ### Widget & Flutter interanls 
 - Widget tree, element tree and render tree 
-- How flutter rebuilds and repaints the screen
-- How flutter executes build 
-
+- How Flutter rebuilds and repaints the screen
+- How Flutter executes build 
+- Using builder methods to build single or multiple widgets using the spread operator
 
 
 
