@@ -31,7 +31,8 @@ samples, guidance on mobile development, and a full API reference.
 - How Flutter rebuilds and repaints the screen
 - How Flutter executes build 
 - Using builder methods to build single or multiple widgets using the spread operator
-
+- Widget lifecycle (initState(), didUpdateWidget(), dispose()) 
+- 
 
 
 ![Screenshot from 2020-12-29 17-51-46](https://user-images.githubusercontent.com/32111609/103331919-05260800-4a36-11eb-987c-907f663162d6.png)
