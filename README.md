@@ -26,6 +26,11 @@ samples, guidance on mobile development, and a full API reference.
 - Show a modal that respect the softkeyboard insets
 - Render content based on device platform using Platform class from dart:io
 
+### Widget & Flutter interanls 
+- Widget tree, element tree and render tree 
+- How flutter rebuilds and repaints the screen
+- How flutter executes build 
+
 
 
 
