@@ -33,6 +33,8 @@ samples, guidance on mobile development, and a full API reference.
 - Using builder methods to build single or multiple widgets using the spread operator
 - Widget lifecycle (initState(), didUpdateWidget(), dispose()) 
 - Understanding App Lifecycle (inactive, paused, resumed, suspended)
+- Understanding Context (widget matadata as well as direct to chnnel to inherited widget)
+- Understanding Keys in Lists
 
 
 ![Screenshot from 2020-12-29 17-51-46](https://user-images.githubusercontent.com/32111609/103331919-05260800-4a36-11eb-987c-907f663162d6.png)
