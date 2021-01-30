@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:my_spendings/widgets/expense_list.dart';
-import 'package:my_spendings/widgets/new_expense.dart';
+
+import './widgets/expense_list.dart';
+import './widgets/new_expense.dart';
 import 'models/expense.dart';
 import './widgets/chart.dart';
 
@@ -52,7 +55,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   final List<Expense> expenses = [];
 
   final titleInput = TextEditingController();
@@ -75,6 +78,23 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   bool _isShowChart = true;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print(state);
+  }
+
+  @override
+  dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
 
   List<Expense> get _recentExpenses {
     return _userExpenses.where((ex) {
@@ -121,8 +141,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final isLandscape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
+    final mediaQuery = MediaQuery.of(context);
+    final isLandscape = mediaQuery.orientation == Orientation.landscape;
 
     final appBar = AppBar(
       title: Text("Flutter app"),
@@ -137,9 +157,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     final expList = Container(
-      height: (MediaQuery.of(context).size.height -
+      height: (mediaQuery.size.height -
               appBar.preferredSize.height -
-              MediaQuery.of(context).padding.top) *
+              mediaQuery.padding.top) *
           0.70,
       child: ExpenseList(
         _userExpenses,
@@ -148,17 +168,17 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     final chartAreaLandscape = Container(
-      height: (MediaQuery.of(context).size.height -
+      height: (mediaQuery.size.height -
               appBar.preferredSize.height -
-              MediaQuery.of(context).padding.top) *
+              mediaQuery.padding.top) *
           0.70,
       child: Chart(this._recentExpenses),
     );
 
     final chartAreaPortrait = Container(
-      height: (MediaQuery.of(context).size.height -
+      height: (mediaQuery.size.height -
               appBar.preferredSize.height -
-              MediaQuery.of(context).padding.top) *
+              mediaQuery.padding.top) *
           0.30,
       child: Chart(this._recentExpenses),
     );
@@ -174,7 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Show chart"),
-                    Switch(
+                    Switch.adaptive(
                       value: _isShowChart,
                       onChanged: (val) {
                         setState(() {
@@ -193,12 +213,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          _showNewExpensemodal(context);
-        },
-      ),
+      floatingActionButton: Platform.isIOS
+          ? Container()
+          : FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () {
+                _showNewExpensemodal(context);
+              },
+            ),
     );
   }
 }
